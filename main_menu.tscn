@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvh2dlpe52mqt"]
+
+[ext_resource type="PackedScene" uid="uid://18omo0edaayo" path="res://scene/main_menu.tscn" id="1_xnqud"]
+
+[node name="Main_Menu" instance=ExtResource("1_xnqud")]
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

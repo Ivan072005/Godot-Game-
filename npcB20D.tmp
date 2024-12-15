@@ -1,0 +1,40 @@
+extends CharacterBody2D
+class NPC:
+
+	var name : String
+	var quests : Array
+
+	func _init(_name : String):
+		name = _name
+		quests = []
+
+	func add_quest(quest : String):
+		quests.append(quest)
+		
+	signal interacted_with(NPC)
+	
+# Создаем словарь для хранения NPC
+var npcs : Dictionary = {}
+
+func _ready():
+	# Добавляем NPC в игру
+	var npc1 = NPC.new("NPC1")
+	npc1.add_quest("Quest1")
+	npc1.add_quest("Quest2")
+	npcs[npc1.name] = npc1
+
+	var npc2 = NPC.new("NPC2")
+	npc2.add_quest("Quest3")
+	npc2.add_quest("Quest4")
+	npcs[npc2.name] = npc2
+
+# Функция для обработки взаимодействия с NPC
+func interact_with_npc(npc_name : String):
+	if npcs.has(npc_name):
+		var npc = npcs[npc_name]
+		print("You are interacting with " + npc.name)
+		print("Quests for this NPC are: ")
+		for quest in npc.quests:
+			print(quest)
+	else:
+		print("NPC not found")
